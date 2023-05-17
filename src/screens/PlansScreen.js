@@ -65,7 +65,7 @@ function PlansScreen() {
 
     return (
         <div className='plansScreen'>
-        <br />
+            <br />
             {subscriptions && (
                 <p>
                     Renewal Date: {new Date(subscriptions?.current_period_end * 1000).toLocaleDateString()}
@@ -73,7 +73,9 @@ function PlansScreen() {
             )}
             {Object.entries(products).map(([productId, productData]) => {
                 // add some logic to check if user subscriptions is active
-                const isCurrentPackage = productData.name?.toLowerCase().includes(subscriptions?.role);
+                const isCurrentPackage = productData.name?.toLowerCase().includes(subscriptions?.role.toLowerCase());
+
+                console.log(isCurrentPackage);
                 return (
                     <div
                         key={productId}
